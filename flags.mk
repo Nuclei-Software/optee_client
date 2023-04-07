@@ -20,6 +20,11 @@ override CFLAGS	+= -Werror
 endif
 override CFLAGS += -c -fPIC
 
+MARCH ?=rv64imac
+MABI ?=lp64
+
+CFLAGS += -march=$(MARCH) -mabi=$(MABI)
+
 DEBUG       ?= 0
 ifeq ($(DEBUG), 1)
 override CFLAGS += -DDEBUG -O0 -g
